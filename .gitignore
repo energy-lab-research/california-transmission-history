@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.pem
+*.key
+*.inspect.ndjson
+02_Raw Public Sources/
+05_Quality Checks/previews/
+99_Archive/

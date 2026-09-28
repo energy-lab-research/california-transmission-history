@@ -1,0 +1,166 @@
+{
+  "source": {
+    "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+    "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+    "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+    "presentation_date": "2009-05-04",
+    "source_file": "caiso_2009_2010_iso_plans_presentation.pdf",
+    "scope_note": "This May 2009 CAISO presentation lists 14 renewable-related 2008 Request Window proposals. It is not the unavailable final 2009 CAISO Transmission Plan. Slide 11 says its locations are high-level and approximate, do not depict actual routes or detailed configurations, and the proposals still require further ISO evaluation."
+  },
+  "records": [
+    {
+      "proposal_number": 1,
+      "project_name": "Malin-Cottonwood - Table Mountain 500 kV Line",
+      "project_category": "Reduce congestion and aid import of new renewable resources into California.",
+      "proposed_online_date": "Summer 2016",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 1"
+    },
+    {
+      "proposal_number": 2,
+      "project_name": "Midway-Antelope 500 kV Line",
+      "project_category": "Connect renewable generation, improve reliability and economic operation",
+      "proposed_online_date": "Summer 2014",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 2"
+    },
+    {
+      "proposal_number": 3,
+      "project_name": "North Gila-Imperial Valley #2",
+      "project_category": "Connect renewable generation",
+      "proposed_online_date": "Summer 2014",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 3"
+    },
+    {
+      "proposal_number": 4,
+      "project_name": "Imperial Valley-Blythe Area Renewable Transmission Integration",
+      "project_category": "Deliver solar, wind and geothermal resources to the load centers in Southern California.",
+      "proposed_online_date": "Summer 2014",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 4"
+    },
+    {
+      "proposal_number": 5,
+      "project_name": "Mohave-San Bernardino - Devers Renewable Integration Transmission Project",
+      "project_category": "Deliver output of the proposed solar resources to the Southern California load center.",
+      "proposed_online_date": "Summer 2014",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 5"
+    },
+    {
+      "proposal_number": 6,
+      "project_name": "Green Energy Express Transmission Line Project",
+      "project_category": "Economic project, connect renewable resources",
+      "proposed_online_date": "June 2013",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 8; proposal row 6"
+    },
+    {
+      "proposal_number": 7,
+      "project_name": "Drycreekwind Location Constrained Resource Interconnection Facility (LCRIF) Project",
+      "project_category": "Connecting location-constrained resource interconnection generators (LCRIGs), of which all are renewable generation, in the Tehachapi Wind Resources Area",
+      "proposed_online_date": "October 2013 or sooner",
+      "status": "LCRIF proposal seeking ISO approval",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 9; proposal row 7"
+    },
+    {
+      "proposal_number": 8,
+      "project_name": "Highwind Location Constrained Resource Interconnection Facility (LCRIF) Project",
+      "project_category": "Connecting location-constrained resource interconnection generators (LCRIGs), of which all are renewable generation, in the Tehachapi Wind Resources Area",
+      "proposed_online_date": "December 2010",
+      "status": "LCRIF proposal seeking ISO approval",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 9; proposal row 8"
+    },
+    {
+      "proposal_number": 9,
+      "project_name": "Eldorado - Ivanpah Transmission Project",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "July 2013",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 9; proposal row 9"
+    },
+    {
+      "proposal_number": 10,
+      "project_name": "New ECO 500/230/69kV Substation & New 69kV Transmission Line to Boulevard Substation",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "September 2011",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 9; proposal row 10"
+    },
+    {
+      "proposal_number": 11,
+      "project_name": "Morro Bay-Midway 230 kV Line Nos 1 and 2 Reconductor",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "May 2011",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 9; proposal row 11"
+    },
+    {
+      "proposal_number": 12,
+      "project_name": "San Luis Obispo Solar Switching Station #3",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "December 2010",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 10; proposal row 12"
+    },
+    {
+      "proposal_number": 13,
+      "project_name": "Vaca Dixon - Sobrante - Moraga 230 kV Reinforcement",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "May 2012 or later",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 10; proposal row 13"
+    },
+    {
+      "proposal_number": 14,
+      "project_name": "Table Mountain - Vaca Dixon 230 kV Reinforcement",
+      "project_category": "LGIP/SGIP Network upgrade",
+      "proposed_online_date": "May 2013 or later",
+      "status": "2008 Request Window proposal requiring further ISO study",
+      "source_id": "SRC-CAISO-TPP-2009-PROPOSALS",
+      "source_title": "Overview of the 2009 and 2010 ISO Transmission Plans",
+      "source_url": "https://efiling.energy.ca.gov/GetDocument.aspx?DocumentContentId=8572&tn=51364",
+      "source_locator": "Slide 10; proposal row 14"
+    }
+  ]
+}
