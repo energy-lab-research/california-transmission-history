@@ -1,8 +1,10 @@
 # California Transmission Project History
 
+**Public website:** [Explore the California transmission project history](https://california-transmission-history.ns9524.chatgpt.site/)
+
 ## Repository snapshot
 
-This repository contains the research database, the current five-sheet workbook, and the source for the [interactive website](https://california-transmission-history.ns9524.chatgpt.site/). It is a **private research snapshot**; the website is currently hosted separately in Sites, so a GitHub push does not automatically publish website changes.
+This repository contains the research database, the current five-sheet workbook, and the source for the interactive website. It is a **private research snapshot**; the public website is currently hosted separately in Sites, so a GitHub push does not automatically publish website changes.
 
 - `03_Processed Data/`: citation-rich, machine-readable project observations and the reviewed CAISO crosswalk.
 - `outputs/california_transmission_project_timeline_simple.xlsx`: the five-sheet workbook.
