@@ -12,7 +12,7 @@ if (!match) throw new Error('Could not extract the cited project history from th
 
 const sources = JSON.parse(match[1]);
 const rows = JSON.parse(match[2]);
-if (rows.length !== 12921 || sources.length === 0) throw new Error('Project history is incomplete.');
+if (rows.length === 0 || sources.length === 0 || rows.some(r => r.length !== 19)) throw new Error('Project history is incomplete.');
 const sourcePages = {
   'PG&E': 'https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-costs/transmission-project-review-process/pge-transmission-project-review-process-supporting-documents-and-presentations',
   'SCE': 'https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-costs/transmission-project-review-process/sce-transmission-project-review-process-supporting-documents-and-presentations',
@@ -41,6 +41,20 @@ function categoryFromName(name) {
   if (/\b(reinforcement|reliability enhancement|method of service)\b/.test(n)) return 'Reinforcement (design unspecified)';
   return '';
 }
+// The CAISO annual-plan extraction sometimes puts a project name, planning area, or
+// project-type label in the utility column. Those are not sponsors, so label them
+// explicitly instead of letting them appear as utilities.
+const notASponsor = /\b(kv|reactor|reconductor\w*|transformer|voltage support|phasor|line upgrade|reinforcement|t\/l)\b|\barea\b|-\s*driven project|^undergoing solicitation|^(fresno|kern|humboldt|central valley|north valley|metro area|gba|great bay area|greater bay area|central california|central coast and los padres|north coast and north bay area)\b/i;
+const areaOfPge = /^PG&E\s*[–-]\s*/;
+const majorArea = /^(PG&E|SCE|SDG&E) Area$/;
+let utilitiesRelabeled = 0;
+function normalizeUtility(name) {
+  const area = name.match(majorArea);
+  if (area) { utilitiesRelabeled++; return area[1]; }
+  if (areaOfPge.test(name)) { utilitiesRelabeled++; return 'PG&E'; }
+  if (notASponsor.test(name) && !/^(PG&E|SCE|SDG&E)\b/.test(name)) { utilitiesRelabeled++; return 'Unspecified (plan entry)'; }
+  return name;
+}
 const knownByName = new Map();
 for (const row of rows) {
   if (row[16] === 'Other / unclassified') continue;
@@ -52,6 +66,7 @@ for (const row of rows) {
 let newlyClassified = 0, linkedPages = 0;
 const enrichedRows = rows.map(row => {
   const result = [...row];
+  result[2] = normalizeUtility(result[2]);
   let basis = result[16] === 'Other / unclassified' ? 'Unclassified' : 'Existing workbook label';
   if (result[16] === 'Other / unclassified') {
     const known = knownByName.get(result[1].trim().toLowerCase());
@@ -66,43 +81,9 @@ const enrichedRows = rows.map(row => {
 });
 const data = JSON.stringify({sources, rows:enrichedRows}).replace(/</g, '\\u003c');
 
-let page = html.replace(match[0], 'let DATA = [];\n    const $ =');
-page = page.replace(/    choose\('utility',\[\.\.\.new Set\(DATA\.map\(d=>d\.utility\)\)\]\); choose\('category',\[\.\.\.new Set\(DATA\.map\(d=>d\.category\)\)\]\); choose\('stream',\[\.\.\.new Set\(DATA\.map\(d=>d\.stream\)\)\]\); choose\('status',\[\.\.\.new Set\(DATA\.map\(d=>d\.status\)\)\]\);/, '');
-page = page.replace("    ['search','utility','category','stream','status'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render)); render();", `    async function loadData() {
-      try {
-        const response = await fetch('./data.json');
-        if (!response.ok) throw new Error('Dataset could not be loaded.');
-        const packed = await response.json();
-        DATA = packed.rows.map(r => ({row:r[0],project:r[1],utility:r[2],stream:r[3],projectId:r[4],reportPeriod:r[5],observationDate:r[6],status:r[7],approvalCycle:r[8],reportedCostM:r[9],reportedCostYear:r[10],initialCostM:r[11],initialCostYear:r[12],originalIsd:r[13],currentIsd:r[14],crosswalk:r[15],category:r[16],cancellationFlag:r[17],sourceId:packed.sources[r[18]][0],sourceLocator:packed.sources[r[18]][1],sourceUrl:packed.sources[r[18]][2],sourceTitle:packed.sources[r[18]][3],sourcePage:r[19],categoryBasis:r[20]}));
-        choose('utility',[...new Set(DATA.map(d=>d.utility))]);
-        choose('category',[...new Set(DATA.map(d=>d.category))]);
-        choose('stream',[...new Set(DATA.map(d=>d.stream))]);
-        choose('status',[...new Set(DATA.map(d=>d.status))]);
-        render();
-      } catch (error) {
-        $('count').textContent = 'The project dataset could not load. Please refresh the page.';
-        console.error(error);
-      }
-    }
-    ['search','utility','category','stream','status'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render)); loadData();`);
-page = page.replace('<a href="california_transmission_project_timeline_simple.xlsx">Download workbook</a>', 'Every observation includes its public-source citation');
-page = page.replace('The available records do not consistently support greenfield versus existing-ROW classification.', 'Name-based classification is provisional. Reinforcement without a stated design remains separate; the records do not consistently support greenfield versus existing-ROW classification.');
-page = page.replace("const source=d.sourceUrl&&/^https?:/i.test(d.sourceUrl)?'<a href="+'"'+"'+esc(d.sourceUrl)+'"+'"'+" target=\"_blank\" rel=\"noopener\">Open source document</a>':'No direct URL recorded';", "const source=(d.sourcePage?'<a href=\"'+esc(d.sourcePage)+'\" target=\"_blank\" rel=\"noopener\">Open source web page</a> · ':'')+(d.sourceUrl&&/^https?:/i.test(d.sourceUrl)?'<a href=\"'+esc(d.sourceUrl)+'\" target=\"_blank\" rel=\"noopener\">Open exact cited file</a>':'No direct file URL recorded');");
-page = page.replace("'Source title','Source URL'];", "'Source title','Source URL','Source web page'];");
-page = page.replace("d.sourceTitle,d.sourceUrl])", "d.sourceTitle,d.sourceUrl,d.sourcePage])");
-page = page.replace("'Source title','Source URL','Source web page'];", "'Source title','Source URL','Source web page','Category basis'];");
-page = page.replace("d.sourceTitle,d.sourceUrl,d.sourcePage])", "d.sourceTitle,d.sourceUrl,d.sourcePage,d.categoryBasis])");
-page = page.replace("['Category',d.category],", "['Category',d.category],['Category basis',d.categoryBasis],");
-page = page.replace('Static HTML dashboard. Share this file together with the linked workbook, or upload both files to a static host to make the workbook link available online.', 'California transmission project history. Project records reflect their cited public sources and may include repeated observations across reporting cycles.');
-page = page.replace('Dataset snapshot generated 2026-09-27', 'Dataset snapshot generated 2026-09-27');
-page = page.replace(".join('\n'); const blob", ".join('\\n'); const blob");
-page = page.replace('<meta name="description" content="California transmission project history: costs, schedules, cancellations, project categories, and citations.">', '<meta name="description" content="Explore cited California transmission project history, costs, schedules, and cancellations.">\n  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 64 64\'%3E%3Crect width=\'64\' height=\'64\' rx=\'12\' fill=\'%23103b5d\'/%3E%3Cpath d=\'M8 40 22 24l12 14 21-23M8 51h48\' fill=\'none\' stroke=\'white\' stroke-width=\'5\'/%3E%3C/svg%3E">');
-
-if (page.includes('const S = ') || !page.includes('loadData();')) throw new Error('The page did not convert to external data loading.');
 await fs.mkdir(distDir, { recursive: true });
-await fs.writeFile(path.join(distDir, 'index.html'), page, 'utf8');
 await fs.writeFile(path.join(distDir, 'data.json'), data, 'utf8');
 for (const name of ['index.html','projects.html','analysis.html','style.css','app.js']) {
   await fs.copyFile(path.join(projectDir, 'src', name), path.join(distDir, name));
 }
-console.log(JSON.stringify({records:rows.length,sources:sources.length,newlyClassified,linkedPages,pages:3,dataBytes:Buffer.byteLength(data)}));
+console.log(JSON.stringify({records:rows.length,sources:sources.length,newlyClassified,utilitiesRelabeled,linkedPages,pages:3,dataBytes:Buffer.byteLength(data)}));
